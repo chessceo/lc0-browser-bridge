@@ -38,5 +38,6 @@ namespace lczero {
 
 // Runs the stdin/stdout UCI loop for the engine.
 void RunEngine(SearchFactory* factory);
+void RunFileEngine(SearchFactory* factory);
 
 }  // namespace lczero

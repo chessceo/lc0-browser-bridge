@@ -94,6 +94,8 @@ int main(int argc, const char** argv) {
       CommandLine::RegisterMode("bench", "Very quick benchmark");
       CommandLine::RegisterMode("backendbench",
                                 "Quick benchmark of backend only");
+      CommandLine::RegisterMode("fileuci",
+                                "Run a file-backed UCI daemon.");
       CommandLine::RegisterMode("leela2onnx", "Convert Leela network to ONNX.");
       CommandLine::RegisterMode("onnx2leela",
                                 "Convert ONNX network to Leela net.");
@@ -124,6 +126,8 @@ int main(int argc, const char** argv) {
       // Backend Benchmark mode.
       BackendBenchmark benchmark;
       benchmark.Run();
+    } else if (CommandLine::ConsumeCommand("fileuci")) {
+      lczero::RunFileEngine(SearchManager::Get()->GetFactoryByName("classic"));
     } else if (CommandLine::ConsumeCommand("leela2onnx")) {
       lczero::ConvertLeelaToOnnx();
     } else if (CommandLine::ConsumeCommand("onnx2leela")) {
